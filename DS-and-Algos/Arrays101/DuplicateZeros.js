@@ -16,18 +16,23 @@
 // Input: [1,2,3]
 // Output: null
 // Explanation: After calling your function, the input array is modified to: [1,2,3]
- 
-// create a var for 0;
-//
+
 const duplicateZeros = (arr) => {
-    let zero = 0;
-    arr.forEach(element => {
-        if(element === 0){
-            zero++
+    // get the length of the array
+    let len = arr.length;
+    // loop through looking for 0
+    for (let i = 0; i < len; i++) {
+        if(arr[i] == 0){
+            for(let j = len - 1; j >= i+1; j--){
+                arr[j] = arr[j - 1]
+            }
+            i = i + 1;
         }
-        console.log(zero);
-    });
+
+    }
+    // the question does not ask for a output
+    return;
 }
 
-var testInputArray = [1,0,2,3,0,4,5,0];
+var testInputArray = [1, 0, 2, 3, 0, 4, 5, 0];
 duplicateZeros(testInputArray);
